@@ -1,0 +1,263 @@
+/* General Styles */
+:root {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --card-bg-color: #1e1e1e;
+  --button-bg-color: #333333;
+  --button-text-color: #ffffff;
+  --max-width: 85%; /* Max width for content */
+  --button-padding: 1rem 2rem;
+  --gap-size: 2rem; /* Spacing between elements */
+  --header-font-size: 1.2rem;
+}
+
+.light {
+  --bg-color: #ffffff;
+  --text-color: #121212;
+  --card-bg-color: #f4f4f4;
+  --button-bg-color: #dddddd;
+  --button-text-color: #121212;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Header */
+header {
+  background: var(--card-bg-color);
+  color: var(--text-color);
+  padding: 2vh 4vw;
+  position: sticky; /* Keeps header fixed at the top */
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center; /* Centers header content */
+  align-items: center;
+  width: 100%;
+  max-width: 100%; /* Ensures the header doesn’t exceed screen width */
+  box-sizing: border-box;
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  gap: 2vw; /* Spacing between items */
+  justify-content: center; /* Center the items */
+  align-items: center; /* Ensure items are centered vertically */
+}
+
+header ul li {
+  display: inline;
+  position: relative; /* To position borders correctly */
+}
+
+/* Link and Button styles */
+header ul li a,
+header ul li button {
+  color: var(--text-color);
+  text-decoration: none;
+  display: inline-block;
+  font-size: var(--header-font-size); /* Adjusted for dynamic resizing */
+  padding: 0.5rem 1rem; /* Padding for the links/buttons */
+}
+
+/* Remove underline effect on hover */
+header ul li a:hover,
+header ul li button:hover {
+  /* No underline or border effect */
+  text-decoration: none;
+}
+
+/* Remove vertical lines and spacing between items */
+header ul li:not(:last-child) {
+  padding-right: 1.5vw; /* Ensure space between items */
+  margin-right: 1.5vw; /* Spacing between items */
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 10vh 5vw;
+  background: #444;
+  color: #fff;
+}
+
+.cta-button {
+  background: #007BFF;
+  color: #fff;
+  padding: var(--button-padding);
+  border: none;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background: #0056b3;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-size);
+  padding: 4vh 4vw;
+  justify-content: center;
+  max-width: 100%;
+  margin: 0 auto; /* Centering content */
+}
+
+.feature {
+  display: flex;
+  flex-direction: column; /* Ensures title is on top */
+  align-items: center;
+  gap: var(--gap-size);
+  background: var(--card-bg-color);
+  padding: 4vh 4vw;
+  border-radius: 0; /* No rounded corners */
+  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 80%; /* Max width */
+  margin: 0 auto;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+}
+
+.feature-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  width: 100%; /* Ensures the title spans the full width */
+}
+
+.feature-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.feature-content img {
+  width: 100%;
+  max-width: 40vw; /* Max width relative to viewport */
+  height: auto;
+  border-radius: 8px;
+  flex: 0 0 auto;
+}
+
+.feature-content .description {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.feature:nth-child(odd) .feature-content {
+  flex-direction: row-reverse; /* For odd features, image on the left, description on the right */
+}
+
+.feature:nth-child(even) .feature-content {
+  flex-direction: row; /* For even features, image on the right, description on the left */
+}
+
+/* Contact Section */
+.contact {
+  padding: 4vh 5vw;
+  background: var(--card-bg-color);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content */
+  justify-content: center;
+}
+
+.contact h2 {
+  font-size: 2rem;
+  margin-bottom: var(--gap-size);
+}
+
+.contact form {
+  max-width: 100%;
+  margin: 0 auto;
+  width: 80%; /* Relative width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact label {
+  display: block;
+  margin-bottom: 1vh;
+}
+
+.contact input,
+.contact textarea,
+.contact button {
+  width: 100%;
+  padding: 2vh;
+  margin-bottom: 2vh;
+}
+
+.contact button {
+  background: #007BFF;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.contact button:hover {
+  background: #0056b3;
+}
+
+#error-message {
+  color: red;
+  font-size: 1.2rem;
+}
+
+/* Layout Helper for Mobile Responsiveness */
+@media (max-width: 768px) {
+  header {
+    padding: 2vh 2vw; /* Less padding for smaller screens */
+  }
+
+  header ul {
+    gap: 1rem; /* Reduce the gap between items even more */
+  }
+
+  header ul li a, header ul li button {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+
+  .feature-content {
+    flex-direction: column; /* Stack image and description on smaller screens */
+  }
+
+  .hero {
+    padding: 10vh 5vw;
+  }
+  
+  .cta-button {
+    padding: 1.5rem 3rem;
+  }
+}
+
+/* Larger Screen Adjustments */
+@media (min-width: 1024px) {
+  header ul li a, header ul li button {
+    font-size: 1.6rem; /* Larger font for larger screens */
+  }
+
+  header {
+    padding: 2vh 4vw; /* Slightly larger padding */
+  }
+
+  .cta-button {
+    padding: 1.5rem 3rem;
+  }
+}

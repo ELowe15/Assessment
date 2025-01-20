@@ -2,21 +2,29 @@
 :root {
   --bg-color: #121212;
   --text-color: #ffffff;
-  --card-bg-color: #1e1e1e;
-  --button-bg-color: #333333;
+  --card-bg-color: #B8D9D6; /* Soft pastel teal */
+  --button-bg-color: #FF8A65; /* Soft coral for light mode */
   --button-text-color: #ffffff;
-  --max-width: 85%; /* Max width for content */
+  --max-width: 85%;
   --button-padding: 1rem 2rem;
-  --gap-size: 2rem; /* Spacing between elements */
+  --gap-size: 2rem;
   --header-font-size: 1.2rem;
 }
 
 .light {
-  --bg-color: #ffffff;
+  --bg-color: #F4F1EC; /* Light beige background */
   --text-color: #121212;
-  --card-bg-color: #f4f4f4;
-  --button-bg-color: #dddddd;
-  --button-text-color: #121212;
+  --card-bg-color: #B8D9D6; /* Soft pastel teal */
+  --button-bg-color: #FF8A65; /* Soft coral */
+  --button-text-color: #ffffff;
+}
+
+.dark {
+  --bg-color: #2C2F35; /* Dark soft gray background */
+  --text-color: #ffffff;
+  --card-bg-color: #1e1e1e;
+  --button-bg-color: #4B8780; /* Muted teal for dark mode */
+  --button-text-color: #ffffff;
 }
 
 body {
@@ -33,15 +41,15 @@ header {
   background: var(--card-bg-color);
   color: var(--text-color);
   padding: 2vh 4vw;
-  position: sticky; /* Keeps header fixed at the top */
+  position: sticky;
   top: 0;
   z-index: 1000;
   display: flex;
-  justify-content: center; /* Centers header content */
+  justify-content: center;
   align-items: center;
-  width: 100%;
-  max-width: 100%; /* Ensures the header doesn’t exceed screen width */
+  gap: 2vw;
   box-sizing: border-box;
+  text-align: center;
 }
 
 header ul {
@@ -49,52 +57,50 @@ header ul {
   display: flex;
   padding: 0;
   margin: 0;
-  gap: 2vw; /* Spacing between items */
-  justify-content: center; /* Center the items */
-  align-items: center; /* Ensure items are centered vertically */
+  gap: 2vw;
 }
 
 header ul li {
   display: inline;
-  position: relative; /* To position borders correctly */
 }
 
-/* Link and Button styles */
 header ul li a,
 header ul li button {
   color: var(--text-color);
   text-decoration: none;
   display: inline-block;
-  font-size: var(--header-font-size); /* Adjusted for dynamic resizing */
-  padding: 0.5rem 1rem; /* Padding for the links/buttons */
+  font-size: var(--header-font-size);
+  padding: 0.5rem 1rem;
 }
 
-/* Remove underline effect on hover */
-header ul li a:hover,
+header ul li button {
+  background: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
 header ul li button:hover {
-  /* No underline or border effect */
-  text-decoration: none;
-}
-
-/* Remove vertical lines and spacing between items */
-header ul li:not(:last-child) {
-  padding-right: 1.5vw; /* Ensure space between items */
-  margin-right: 1.5vw; /* Spacing between items */
+  background: #555;
+  cursor: pointer;
 }
 
 /* Hero Section */
 .hero {
   text-align: center;
   padding: 10vh 5vw;
-  background: #444;
-  color: #fff;
+  background: var(--bg-color); /* Updated hero background */
+  color: var(--text-color);
 }
 
 .cta-button {
-  background: #007BFF;
-  color: #fff;
+  background: var(--button-bg-color);
+  color: var(--button-text-color);
   padding: var(--button-padding);
   border: none;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -106,64 +112,62 @@ header ul li:not(:last-child) {
 .features {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-size);
+  gap: 2rem;
   padding: 4vh 4vw;
   justify-content: center;
   max-width: 100%;
-  margin: 0 auto; /* Centering content */
+  margin: 0 auto;
 }
 
 .feature {
   display: flex;
-  flex-direction: column; /* Ensures title is on top */
+  flex-direction: column;
   align-items: center;
-  gap: var(--gap-size);
   background: var(--card-bg-color);
-  padding: 4vh 4vw;
-  border-radius: 0; /* No rounded corners */
+  padding: 2rem;
+  border-radius: 8px;
   transition: transform 0.3s ease;
   width: 100%;
-  max-width: 80%; /* Max width */
+  max-width: 80%; /* Adjust based on design */
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .feature:hover {
   transform: translateY(-5px);
 }
 
-.feature-title {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  width: 100%; /* Ensures the title spans the full width */
-}
-
 .feature-content {
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  flex: 1;
+  flex-wrap: wrap;
 }
 
 .feature-content img {
-  width: 100%;
-  max-width: 40vw; /* Max width relative to viewport */
+  flex: 1;
+  max-width: 45%; /* Reduced max size */
   height: auto;
-  border-radius: 8px;
-  flex: 0 0 auto;
+  padding-bottom: 1rem;
+  object-fit: cover;
 }
 
 .feature-content .description {
-  flex: 1 1 auto;
+  flex: 1;
+  padding: 1rem;
   text-align: center;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
 }
 
 .feature:nth-child(odd) .feature-content {
-  flex-direction: row-reverse; /* For odd features, image on the left, description on the right */
+  flex-direction: row-reverse;
 }
 
 .feature:nth-child(even) .feature-content {
-  flex-direction: row; /* For even features, image on the right, description on the left */
+  flex-direction: row;
 }
 
 /* Contact Section */
@@ -173,8 +177,7 @@ header ul li:not(:last-child) {
   text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center the content */
-  justify-content: center;
+  align-items: center;
 }
 
 .contact h2 {
@@ -185,7 +188,7 @@ header ul li:not(:last-child) {
 .contact form {
   max-width: 100%;
   margin: 0 auto;
-  width: 80%; /* Relative width */
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -200,15 +203,19 @@ header ul li:not(:last-child) {
 .contact textarea,
 .contact button {
   width: 100%;
-  padding: 2vh;
+  max-width: 400px;
+  padding: 1rem;
   margin-bottom: 2vh;
 }
 
 .contact button {
-  background: #007BFF;
-  color: #fff;
+  background: var(--button-bg-color);
+  color: var(--button-text-color);
   border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
   cursor: pointer;
+  max-width: 200px;
 }
 
 .contact button:hover {
@@ -218,43 +225,42 @@ header ul li:not(:last-child) {
 #error-message {
   color: red;
   font-size: 1.2rem;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
 }
 
-/* Layout Helper for Mobile Responsiveness */
+/* Responsive Design */
 @media (max-width: 768px) {
-  header {
-    padding: 2vh 2vw; /* Less padding for smaller screens */
-  }
-
   header ul {
-    gap: 1rem; /* Reduce the gap between items even more */
+    gap: 1rem;
   }
 
-  header ul li a, header ul li button {
-    font-size: 1rem; /* Adjust font size for smaller screens */
+  header ul li a,
+  header ul li button {
+    font-size: 1rem;
   }
 
   .feature-content {
-    flex-direction: column; /* Stack image and description on smaller screens */
+    flex-direction: column;
   }
 
   .hero {
     padding: 10vh 5vw;
   }
-  
+
   .cta-button {
     padding: 1.5rem 3rem;
   }
 }
 
-/* Larger Screen Adjustments */
 @media (min-width: 1024px) {
-  header ul li a, header ul li button {
-    font-size: 1.6rem; /* Larger font for larger screens */
+  header ul li a,
+  header ul li button {
+    font-size: 1.6rem;
   }
 
   header {
-    padding: 2vh 4vw; /* Slightly larger padding */
+    padding: 2vh 4vw;
   }
 
   .cta-button {

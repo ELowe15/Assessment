@@ -20,61 +20,6 @@ toggleButton.addEventListener('click', () => {
   }
 });
 
-// Dynamic Features Section - No HTML in JavaScript
-const features = [
-  {
-    title: 'Feature 1',
-    image: 'https://via.placeholder.com/300',
-    description: 'Feature 1 description goes here.',
-  },
-  {
-    title: 'Feature 2',
-    image: 'https://via.placeholder.com/300',
-    description: 'Feature 2 description goes here.',
-  },
-  {
-    title: 'Feature 3',
-    image: 'https://via.placeholder.com/300',
-    description: 'Feature 3 description goes here.',
-  },
-];
-
-const featuresSection = document.getElementById('features');
-
-// Generate and display features dynamically
-features.forEach((feature, index) => {
-  const featureDiv = document.createElement('div');
-  featureDiv.classList.add('feature');
-
-  const featureTitle = document.createElement('h2');
-  featureTitle.classList.add('feature-title');
-  featureTitle.innerText = feature.title;
-
-  const featureContent = document.createElement('div');
-  featureContent.classList.add('feature-content');
-
-  const featureImage = document.createElement('img');
-  featureImage.src = feature.image;
-  featureImage.alt = `${feature.title} Image`;
-
-  const featureDescription = document.createElement('div');
-  featureDescription.classList.add('description');
-  featureDescription.innerHTML = `<p>${feature.description}</p>`;
-
-  featureContent.appendChild(featureImage);
-  featureContent.appendChild(featureDescription);
-
-  featureDiv.appendChild(featureTitle);
-  featureDiv.appendChild(featureContent);
-
-  // Alternate the position of the image and description
-  if (index % 2 !== 0) {
-    featureContent.classList.add('reverse');
-  }
-
-  featuresSection.appendChild(featureDiv);
-});
-
 // Smooth Scroll with Offset for Sticky Header
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
@@ -91,6 +36,57 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       });
     }
   });
+});
+
+// Dynamic Features Section - No HTML in JavaScript
+const features = [
+  {
+    title: 'Feature 1',
+    image: '', // No image provided
+    description: 'Feature 1 description goes here.',
+  },
+  {
+    title: 'Feature 2',
+    image: '',
+    description: 'Feature 2 description goes here.',
+  },
+  {
+    title: 'Feature 3',
+    image: '', // No image provided
+    description: 'Feature 3 description goes here.',
+  },
+];
+
+const featuresSection = document.getElementById('features');
+const placeholderImage = 'placeHolderImage.jpg'; // Path to your placeholder image
+
+// Generate and display features dynamically
+features.forEach((feature, index) => {
+  const featureDiv = document.createElement('div');
+  featureDiv.classList.add('feature');
+
+  const featureTitle = document.createElement('h2');
+  featureTitle.classList.add('feature-title');
+  featureTitle.innerText = feature.title;
+
+  const featureContent = document.createElement('div');
+  featureContent.classList.add('feature-content');
+
+  const featureImage = document.createElement('img');
+  featureImage.src = feature.image || placeholderImage; // Use placeholder image if none is provided
+  featureImage.alt = feature.image ? `${feature.title} Image` : 'Placeholder Image';
+
+  const featureDescription = document.createElement('div');
+  featureDescription.classList.add('description');
+  featureDescription.innerHTML = `<p>${feature.description}</p>`;
+
+  featureContent.appendChild(featureImage);
+  featureContent.appendChild(featureDescription);
+
+  featureDiv.appendChild(featureTitle);
+  featureDiv.appendChild(featureContent);
+
+  featuresSection.appendChild(featureDiv);
 });
 
 // Form Validation for Contact Section

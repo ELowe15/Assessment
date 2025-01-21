@@ -31,7 +31,6 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
 /* Header */
@@ -151,7 +150,6 @@ header ul li button:hover {
   background: var(--card-bg-color);
   padding: 2rem;
   border-radius: 8px;
-  transition: transform 0.3s ease; /* Smooth hover effect */
   width: 100%;
   max-width: 80%; /* Max width for feature blocks */
   margin: 0 auto;

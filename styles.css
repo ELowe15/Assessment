@@ -2,11 +2,6 @@
 
 /* General Styles */
 :root {
-  --bg-color: #121212;
-  --text-color: #ffffff;
-  --card-bg-color: #1e1e1e;
-  --button-bg-color: #333333;
-  --button-text-color: #ffffff;
   --max-width: 85%;
   --button-padding: 1rem 2rem;
   --gap-size: 2rem;
@@ -263,7 +258,7 @@ header ul li button:hover {
   margin-bottom: 1rem;
 }
 
-/* Responsive Design */
+/* Responsive design for mobile devices */
 @media (max-width: 768px) {
   header ul {
     gap: 1rem;
